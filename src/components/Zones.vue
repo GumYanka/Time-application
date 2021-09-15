@@ -52,7 +52,7 @@ export default {
       this.getTimeDetails().then((timeDetails) => {
         this.$emit("update-time", timeDetails);
       });
-    },
+    }
   },
 };
 </script>

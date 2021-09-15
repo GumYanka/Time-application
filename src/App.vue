@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="title">World time application</h1>
 
-    <zones @update-time="updateTime" @add-time="addTime" />
+    <zones @update-time="updateTime" @add-time="addTime"/>
 
     <h1 v-for="(time, index) in times.slice(0, 5)" :key="index" class="title">
       {{ time.hours }}:{{ time.minutes }}:{{ time.seconds }} -
@@ -14,10 +14,9 @@
     <div v-if="times.length > 5" class="title text">
   This is the maximum number of zones that can be viewed.
 </div>
-<!-- <span v-else-if="time === time.details.timezone" class="title text">
+<!-- <div v-if="this.times.includes(time)" class="title text">
   This zone already exists.
-</span> -->
-
+</div> -->
   </div>
 </template>
 
@@ -57,12 +56,15 @@ export default {
     deleteItem(index) {
       this.times.splice(index, 1);
 },
-say: function (message) {
-      alert(message)
-    }
-},
-computed:{
+addZone(time) {
+  if(this.times.includes(time)) {
+    alert('Already in list...')
+    console.log('ejhhrk')
+  } else {
+    this.times.push(time)
+  }
 }
+} 
 }
 </script>
 
